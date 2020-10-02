@@ -1,0 +1,25 @@
+{
+  "name": "first-app",
+  "version": "1.0.0",
+  "homepage": "",
+  "scripts": {
+    "start": "npm run copy-shareable & set PORT=3011 && react-scripts start",
+    "copy-shareable": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null",
+    "move-js": "Xcopy /E /I /y build\\*.js ..\\..\\build\\SiteAssets\\pages\\first",
+    "move-css": "Xcopy /E /I /y build\\*.css ..\\..\\build\\SiteAssets\\pages\\first",
+    "move-html": "Xcopy /E /I /y build\\*.html ..\\..\\build\\SiteAssets\\pages\\first",
+    "build": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null & react-scripts build --prefix src/first-app && RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\first 2>null & npm run move-js && npm run move-css && npm run move-html"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
