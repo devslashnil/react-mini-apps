@@ -9,7 +9,7 @@
     "move-css": "Xcopy /E /I /y build\\*.css ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
     "move-html": "Xcopy /E /I /y build\\*.html ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
     "move-map": "Xcopy /E /I /y build\\*.map ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
-    "build": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null & react-scripts build --prefix src/default-app && RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME 2>null & npm run move-js && npm run move-css && npm run move-html && npm run move-map"
+    "build": "npm run copy-shareable & react-scripts build --prefix src/default-app && RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME 2>null & npm run move-js && npm run move-css && npm run move-html && npm run move-map"
   },
   "browserslist": {
     "production": [
