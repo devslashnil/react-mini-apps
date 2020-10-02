@@ -40,5 +40,6 @@
     "gulp-json-format": "^2.0.0",
     "sp-rest-proxy": "^3.0.2",
     "yargs": "^16.0.3"
-  }
+  },
+  "proxy": "http://localhost:8082"
 }

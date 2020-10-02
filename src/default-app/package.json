@@ -1,14 +1,15 @@
 {
   "name": "default-app",
   "version": "1.0.0",
-  "homepage": "",
+  "homepage": "/SiteAssets/pages/PAGE_NAME",
   "scripts": {
     "start": "npm run copy-shareable & set PORT=3010 && react-scripts start",
     "copy-shareable": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null",
-    "move-js": "Xcopy /E /I /y build\\*.js ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME",
-    "move-css": "Xcopy /E /I /y build\\*.css ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME",
-    "move-html": "Xcopy /E /I /y build\\*.html ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME",
-    "build": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null & react-scripts build --prefix src/default-app && RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME 2>null & npm run move-js && npm run move-css && npm run move-html"
+    "move-js": "Xcopy /E /I /y build\\*.js ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
+    "move-css": "Xcopy /E /I /y build\\*.css ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
+    "move-html": "Xcopy /E /I /y build\\*.html ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
+    "move-map": "Xcopy /E /I /y build\\*.map ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
+    "build": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null & react-scripts build --prefix src/default-app && RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME 2>null & npm run move-js && npm run move-css && npm run move-html && npm run move-map"
   },
   "browserslist": {
     "production": [
@@ -21,5 +22,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:8082"
 }
