@@ -1,30 +1,30 @@
 ## Установка
 
-1. Вызвать yarn / npm i
-2. (Желательно) Вызвать yarn proxy / npm run proxy, для конфигурации проксей шарика. Если пропустить этот шаг, live сервер все равно запустится.
-3. Поставить gulp `npm i -g gulp`, если после установки не находит gulp, то запускать надо npx gulp
+1. Вызвать npm i
+2. (Желательно) Вызвать npm run proxy, для конфигурации проксей шарика. Если пропустить этот шаг, live сервер все равно запустится.
+3. Поставить gulp `npm i -g gulp`, если после установки не находит gulp, то надо запускать через `npx gulp`
    <br />
 
 ## Доступные скрипты
 
 В директории проекта вы можете запускать:
 
-### `yarn proxy`
+### `npm run proxy`
 
 Необходимо запустить один раз для конфигурации прокси для live сервера.
 
-### `gulp add --page YourPageName`
+### `npx gulp add --page YourPageName`
 
 Создает мини приложение в папке src/your-page-name-app, где хранятся исходиники вашей будущей страницы YourPageName<br />
 
-### `yarn build-your-page-name-app`
+### `npm run build-your-page-name-app`
 
 Собирает ваш апп и кладёт файлы и кладёт в папку ./build/SiteAssets/Pages/YourPageName<br />
 
-### `yarn build`
+### `npm run build`
 
 Запускает build-\*-app для всех созданных вами страниц <br />
 
-### `yarn start-your-page-name-app`
+### `npm run start-your-page-name-app`
 
 Запускает live сервер разработчика с вашим аппом на уникальном порту<br />

@@ -5,11 +5,11 @@
   "scripts": {
     "start": "npm run copy-shareable & set PORT=3010 && react-scripts start",
     "copy-shareable": "Xcopy /E /I /y ..\\shareable src\\shareable 2>null",
-    "move-js": "Xcopy /E /I /y build\\*.js ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
-    "move-css": "Xcopy /E /I /y build\\*.css ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
-    "move-html": "Xcopy /E /I /y build\\*.html ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
-    "move-map": "Xcopy /E /I /y build\\*.map ..\\..\\remote\\SiteAssets\\pages\\PAGE_NAME",
-    "build": "npm run copy-shareable & react-scripts build --prefix src/default-app && RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME 2>null & npm run move-js && npm run move-css && npm run move-html && npm run move-map"
+    "delete-old-build": "RMDIR /S /Q ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME 2>null && null",
+    "delete-json": "del /S /Q build/*.json",
+    "move-to-remote": "Xcopy /E /I /y build\\**\\* ..\\..\\build\\SiteAssets\\pages\\PAGE_NAME",
+    "build-mini-app": "react-scripts build",
+    "build": "npm run copy-shareable & npm run build-mini-app && npm run delete-json & npm run move-to-remote"
   },
   "browserslist": {
     "production": [
