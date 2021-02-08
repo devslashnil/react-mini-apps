@@ -29,7 +29,7 @@
 
 ### `npm run build`
 
-Запускает `build-\*-app` для всех созданных вами страниц <br />
+Запускает `build-*-app` для всех созданных вами страниц <br />
 
 ### `npm run start-your-page-name-app`
 
