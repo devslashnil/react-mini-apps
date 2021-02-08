@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const jsonFormat = require('gulp-json-format');
-const { src, dest, series, watch, parallel } = require('gulp');
+const { src, dest, series, watch } = require('gulp');
 const change = require('gulp-change');
 const { argv } = require('yargs');
-const es = require('event-stream')
 
 let numFolder = 1;
 
