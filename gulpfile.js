@@ -1,9 +1,13 @@
 const fs = require('fs');
-let numFolder = 1;
-var jsonFormat = require('gulp-json-format');
-const { src, dest, series } = require('gulp');
+const path = require('path');
+const jsonFormat = require('gulp-json-format');
+const { src, dest, series, watch, parallel } = require('gulp');
 const change = require('gulp-change');
 const { argv } = require('yargs');
+const es = require('event-stream')
+
+let numFolder = 1;
+
 
 fs.readdir('./src', (err, files) => {
   numFolder = files.length - files.includes('shareable');
@@ -52,7 +56,7 @@ const changeMainPkg = () => {
         pkg.scripts[
           `start-${appName}`
         // eslint-disable-next-line no-useless-escape
-        ] = `concurrently --kill-others \"npm run proxy\" \"npm run start --prefix src/${appName}\"`;
+        ] = `concurrently --kill-others \"npm run proxy\" \"npm run start --prefix src/${appName}\" \"npx gulp\"`;
         return JSON.stringify(pkg);
       }),
     )
@@ -65,4 +69,30 @@ const prettifyPkgJson = () => {
     .pipe(dest('.'));
 }
 
+const getFoldersNames = (dir) => {
+    return fs.readdirSync(dir)
+      .filter((file) => {
+        return fs.statSync(path.join(dir, file)).isDirectory();
+      });
+}
+
+const copyMainShareable = () => {
+  const appsFolders = getFoldersNames('./src')
+    .filter((folder) => folder !== 'default-app' && folder !== 'shareable')
+  let pipeLine = src('./src/shareable/**/*');
+
+  appsFolders.forEach((folder) => {
+      pipeLine = pipeLine.pipe(dest(`./src/${folder}/src/shareable/`));
+  });
+
+  return pipeLine;
+};
+
+const watchFiles = (params) => {
+  watch('./src/shareable', copyMainShareable);
+}
+
+const syncShareables = series(copyMainShareable, watchFiles)
+
 exports.add = series(copyDefaultApp, changeSubPkg, changeMainPkg, prettifyPkgJson);
+exports.default = syncShareables;
