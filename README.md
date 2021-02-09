@@ -17,7 +17,7 @@
 
 ### `npx gulp`
 
-Запускает автоматическую синхронизацию файлов в `./src/your-app/shareable` с `./src/shareable`
+Запускает автоматическую синхронизацию файлов в `./src/shareable` с `./src/your-app/shareable`. (Из первой папки затираются файлы во втрой)
 
 ### `npm run proxy`
 
